@@ -69,6 +69,16 @@ export default function UserDetailPage() {
               >
                 Suspend
               </button>
+              <button
+                className="button danger"
+                onClick={async () => {
+                  if (!window.confirm("Permanently delete this user? This cannot be undone.")) return;
+                  await action("delete");
+                  router.push("/users");
+                }}
+              >
+                Delete
+              </button>
               <button className="button ghost" onClick={() => router.back()}>Back</button>
             </div>
           </section>
